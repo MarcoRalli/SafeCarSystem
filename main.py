@@ -25,4 +25,4 @@ if __name__ == "__main__":
     #arrivo dell'immagige e processazione
 
     
-    print(classification.classification(vgg_model_dropout, "frame238.jpg"))
+    print(classification.classification(vgg_model_dropout, "test.jpg"))
