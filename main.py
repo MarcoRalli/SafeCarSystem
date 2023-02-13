@@ -17,12 +17,12 @@ if __name__ == "__main__":
 
     print("System is going to start----->\n")
     vgg_model_dropout = None
-    while(vgg_model_dropout != None):
-        print(".......\n")
-        vgg_model_dropout = tf.keras.models.load_model("model/CNN_VGG16_Dropout_fineTuning2/model.h5")
-       
+    #while(vgg_model_dropout != None):
+    print(".......\n")
+    vgg_model_dropout = tf.keras.models.load_model("CNN_VGG16_Dropout_fineTuning/model.h5")
+    
     print("Image capturing system online")
     #arrivo dell'immagige e processazione
 
     
-    classification.classification(vgg_model_dropout, image)
+    print(classification.classification(vgg_model_dropout, "frame238.jpg"))

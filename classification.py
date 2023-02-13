@@ -32,7 +32,8 @@ def classification(model, image):
     img_np = prepare(image)
     test = np.array(img_np)
     class_prob=model.predict(test,batch_size=1)
-    res = np.where(class_prob == np.max(class_prob))
+    res = np.where(class_prob == np.max(class_prob))[0]
+    print(res)
     if(res == 0):
         return("Safe")
     elif(res == 1 or res == 2 or res == 3 or res == 4 ):
