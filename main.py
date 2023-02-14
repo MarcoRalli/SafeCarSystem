@@ -14,8 +14,6 @@ import classification
 
 
 
-resize_dim = (300, 200)
-
 
 if __name__ == "__main__":
 
@@ -23,17 +21,16 @@ if __name__ == "__main__":
     vgg_model_dropout = None
     #while(vgg_model_dropout != None):
     print(".......\n")
-    image = tf.keras.utils.load_img("dis1.PNG", target_size = resize_dim )
-    input_arr = tf.keras.utils.img_to_array(image)
-    input_arr = np.array([input_arr])  # Convert single image to a batch.
-
-    vgg_model_dropout = tf.keras.models.load_model("model/CNN_pretrained/CNN_VGG16_Dropout_fineTuning/model.h5")
-    class_prob=vgg_model_dropout.predict(input_arr,batch_size=1)
-    print(class_prob)
-
-        
-        
+    flag = 0
+    count = 0
+    vgg_model = tf.keras.models.load_model("mode/CNN_pretrained/CNN_VGG16_Dropout_fineTuning2/model.h5")
+  
+    for image in os.listdir("phone"):
+        print(classification.classification(vgg_model, "phone/"+image))
        
-
-    
-    #print(classification.classification(vgg_model_dropout, "data_to_test/c1/img_520.jpg"))
+        # if res != 0:
+        #     count = count +1
+        #     if count == 2:
+        #         flag = 1
+        # print(flag)
+ 

@@ -19,32 +19,24 @@ import cv2
 
 resize_dim = (300, 200)
 
-def prepare(path):
-
-    img = Image.open(path)
-    #rgb_im = img.convert('RGB')
-    img1 = img.resize(resize_dim, PIL.Image.ANTIALIAS)
-    print(img1.size)
-    img2 = np.reshape(img1,(1, 300, 200, 3))
-    return img2
    
 
 def classification(model, image):
 
-    img_np = prepare(image)
-    test = np.array(img_np)
-    class_prob=model.predict(test,batch_size=1)
-    print(class_prob)
-    res = np.where(class_prob == np.max(class_prob))[1]
-    print(res)
-    if(res == 0):
-        return("Safe")
-    elif(res == 1 or res == 2 or res == 3 or res == 4 ):
-        return("Phone")
-    elif(res == 5):
-        return("Radio")
-    elif(res == 6 or res == 7 or res == 8 or res == 9):
-        return("Distraction")
+    img = tf.keras.utils.load_img(image, target_size = resize_dim, interpolation = "bilinear")
+    input_arr = tf.keras.utils.img_to_array(img)
+    input_arr = np.array([input_arr])  # Convert single image to a batch.
 
+    class_prob=model.predict(input_arr,batch_size=1)
+
+    res = np.where(class_prob == np.max(class_prob))[1]
+    if(res == 0):
+        return("Phone")
+    elif(res == 1 ):
+        return("Distraction")
+    elif(res == 2):
+        return("Safe")
+ 
+ 
 
 
