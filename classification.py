@@ -30,6 +30,7 @@ def classification(model, image):
     class_prob=model.predict(input_arr,batch_size=1)
 
     res = np.where(class_prob == np.max(class_prob))[1]
+    print(res)
     if(res == 0):
         return("Phone")
     elif(res == 1 ):
