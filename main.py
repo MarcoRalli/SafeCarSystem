@@ -27,9 +27,14 @@ if __name__ == "__main__":
 
     print(".......\n")
 
-    mac_cam = cv2.VideoCapture(0)
+    #mac_cam = cv2.VideoCapture(0)
     vgg_model = tf.keras.models.load_model("mode/CNN_pretrained/CNN_VGG16_Dropout_fineTuning2/model.h5")
-
+    for image in os.listdir("image"):
+        print(image)
+        if image == ".DS_Store":
+            continue
+        print(classification.classification(vgg_model,"image/"+image))
+    '''
     while(True):
 
         retrieve, frames = mac_cam.read()
@@ -65,5 +70,5 @@ if __name__ == "__main__":
             flag_safe = 0
             flag_phone = 0
             flag_dist = 0
-    
+        '''
  
