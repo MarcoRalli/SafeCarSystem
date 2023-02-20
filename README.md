@@ -7,4 +7,4 @@ Notebook presents the pipeline to create properly the datast and to train the ne
 *------------------------------------------------*
 
 Then there is a simple script that load the model and by using some images, made with the web cam or raspberry cam, is able to understand the driver behavior.
-To lunch the code "main.py" must be compiled.
+
